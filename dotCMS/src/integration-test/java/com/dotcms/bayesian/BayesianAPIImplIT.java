@@ -1,8 +1,12 @@
-package com.dotcms.analytics.bayesian;
+package com.dotcms.bayesian;
 
+import com.dotcms.IntegrationTestBase;
+import com.dotcms.analytics.bayesian.BayesianAPI;
 import com.dotcms.analytics.bayesian.model.*;
-import com.dotcms.analytics.bayesian.model.VariantInput;
-import org.junit.Before;
+import com.dotcms.util.IntegrationTestInitService;
+import com.dotmarketing.business.APILocator;
+import com.dotmarketing.util.Config;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,13 +20,15 @@ import static org.junit.Assert.*;
  *
  * @author vico
  */
-public class BayesianAPIImplTest {
+public class BayesianAPIImplIT extends IntegrationTestBase {
 
-    private BayesianAPI bayesianAPI;
+    private static BayesianAPI bayesianAPI;
 
-    @Before
-    public void setup() {
-        bayesianAPI = new BayesianAPIImpl();
+    @BeforeClass
+    public static void beforeClass() throws Exception {
+        IntegrationTestInitService.getInstance().init();
+        bayesianAPI = APILocator.getBayesianAPI();
+        Config.setProperty("INCLUDE_BETA_DISTRIBUTION_SAMPLES", true);
     }
 
     /**

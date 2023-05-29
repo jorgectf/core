@@ -90,7 +90,6 @@ import java.util.stream.Stream;
 import net.bytebuddy.utility.RandomString;
 import org.junit.Assert;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -2607,7 +2606,6 @@ public class ExperimentAPIImpIntegrationTest extends IntegrationTestBase {
      * Should: calculate the probability that B beats A is 0.99
      */
     @Test
-    @Ignore
     public void test_calcBayesian_ABC() throws DotDataException, DotSecurityException {
         final Host host = new SiteDataGen().nextPersisted();
         final Template template = new TemplateDataGen().host(host).nextPersisted();
